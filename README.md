@@ -12,10 +12,29 @@ This API allow anyone that runs its to create, list, edit and remove an game fro
 * [Postman](https://www.postman.com)
 
 After this installations you will need:
- * create a database and put that name in "APIGames/config/db.config.js" - line 9. Replace the database name for yours.
+ * Create a database and put that name in "APIGames/config/db.config.js" - line 9. Replace the database name for yours.
  * Navigate trought "APIGames/models/Games.js", uncomment the line 50 and set force to true.
- * create a ".env" file in the "APIGames" folder, and put your HOST, USARNAME and PASSWORD to match with the cariables in "db.config.js"
+ * Create a ".env" file in the "APIGames" folder, and put your HOST, USARNAME and PASSWORD to match with the cariables in "db.config.js"
+
+The API runs on port ``3000`` 
+
+### Clone the API
+
+```git clone https://github.com/DanielMarquesz/RestAPI-Games.git```
+
+### Run with NPM
 
 ```
-
+cd APIGames
+npm install
+npm run dev
 ```
+## Documentation :page_with_curl:
+
+<hr>
+
+### Routes :pineapple:
+
+* All routes runs on the pattern endpoint ``http://localhost:`3000/store``
+
+#### GET

@@ -37,4 +37,117 @@ npm run dev
 
 * All routes runs on the pattern endpoint ``http://localhost:`3000/store``
 
-#### GET
+#### /GET/ 
+  
+Endpoint: ``http://localhost:3000/store/list``
+
+- Return all the games that are register in an array of objects.
+- Parameters: None
+- Responses:<br>
+  200 ``OK`` - If the request and responde was made successfully.<br>
+  404 ``Not Found`` - If exists an error in the route.<br>
+  500 ``Internal Server Error`` - If something not workin in the server side.
+
+
+```
+[
+    {
+        "id": 14,
+        "title": "Sea of Pirates",
+        "description": "GOTY 2015",
+        "price": 200.2,
+        "quantity": 10,
+        "year": 1996,
+        "avaiable": true,
+        "cover": "https://www.pexels.com/pt-br/foto/aparelho-brincadeiras-brincar-brinquedo-776092/",
+        "createdAt": "2021-01-03T02:11:37.000Z",
+        "updatedAt": "2021-01-05T00:24:15.000Z"
+    },
+    {
+        "id": 20,
+        "title": "Minecraft",
+        "description": "Jogo mais realista do mundo",
+        "price": 33,
+        "quantity": 1,
+        "year": 2015,
+        "avaiable": true,
+        "cover": "https://www.pexels.com/pt-br/foto/borrao-brincadeiras-close-concentracao-159393/",
+        "createdAt": "2021-01-03T22:15:46.000Z",
+        "updatedAt": "2021-01-05T00:28:47.000Z"
+    }
+]
+```
+
+<hr>
+
+#### /GET/:id
+  
+Endpoint: ``http://localhost:3000/store/list/22``
+
+- Return one game that are register in an of object.
+- Parameters: The item id is searched for.
+- Responses:<br>
+  200 ``OK`` - If the request and responde was made successfully.<br>
+  400 ``Bad Request``- If the id parameter goes wrong.<br>
+  404 ``Not Found`` - If the id parameter does not exist in the database.<br>
+  500 ``Internal Server Error`` - If something not workin in the server side.
+
+
+```
+{
+    "id": 22,
+    "title": "Super meat Boy",
+    "description": "Run and gun",
+    "price": 33,
+    "quantity": 1,
+    "year": 2015,
+    "avaiable": true,
+    "cover": "Red",
+    "createdAt": "2021-01-03T22:17:35.000Z",
+    "updatedAt": "2021-01-03T22:17:35.000Z"
+}
+```
+<hr>
+
+
+#### /POST/
+  
+Endpoint: ``http://localhost:3000/store/register``
+
+- Register a game in the database.
+- Parameters: A json with filled fields.<br>
+
+```
+{
+   "title":"Apex Legends",
+   "description":"Best FPS game.",
+   "price":"200",
+   "quantity":14,
+   "year":1996,
+   "avaiable": true,
+   "cover": "https://www.pexels.com/pt-br/foto/abstrato-resumo-abstrair-negocio-5939135/"
+}
+```
+
+- Responses: The request that was sent.<br>
+201 ``Created`` - If the request was made successfully.
+```
+{
+    "id": 28,
+    "title": "Apex Legends",
+    "description": "Best FPS game.",
+    "price": "200",
+    "avaiable": true,
+    "quantity": 14,
+    "year": 1996,
+    "cover": "https://www.pexels.com/pt-br/foto/abstrato-resumo-abstrair-negocio-5939135/",
+    "updatedAt": "2021-01-05T01:03:49.246Z",
+    "createdAt": "2021-01-05T01:03:49.246Z"
+}
+```
+
+  
+
+
+
+

@@ -1,4 +1,4 @@
-## RestAPI - Games
+## RestAPI - Games :envelope:
 
 ### About the API
 

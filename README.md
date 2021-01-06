@@ -1,6 +1,6 @@
-## RestAPI-Games
+## RestAPI - Games
 
-### About API
+### About the API
 
 This API allow anyone that runs its to create, list, edit and remove an game from a database table. At this moment the API runs too unit and integration tests using [Jest](https://jestjs.io), and have some simple data validations using the [Joi](https://www.npmjs.com/package/joi). This Rest APi was made to pratice and learn about https methods and best pratices of coding, and it still in development.
 
@@ -9,12 +9,13 @@ This API allow anyone that runs its to create, list, edit and remove an game fro
 
 * [Mysql](https://www.mysql.com)
 * [NodeJs](https://nodejs.org/en/)
-* [Postman](https://www.postman.com)
+
 
 After this installations you will need:
  * Create a database and put that name in "APIGames/config/db.config.js" - line 9. Replace the database name for yours.
  * Navigate trought "APIGames/models/Games.js", uncomment the line 50 and set force to true.
- * Create a ".env" file in the "APIGames" folder, and put your HOST, USARNAME and PASSWORD to match with the cariables in "db.config.js"
+ * Create a ".env" file in the "APIGames" folder, and put your HOST, USARNAME and PASSWORD to match with the cariables in "db.config.js".
+ * You can use [Postman](https://www.postman.com) for test the API.
 
 The API runs on port ``3000`` 
 
@@ -44,6 +45,7 @@ Endpoint: ``http://localhost:3000/store/list``
 - Return all the games that are register in an array of objects.
 - Parameters: None
 - Responses:<br>
+
   200 ``OK`` - If the request and responde was made successfully.<br>
   404 ``Not Found`` - If exists an error in the route.<br>
   500 ``Internal Server Error`` - If something not workin in the server side.
@@ -87,6 +89,7 @@ Endpoint: ``http://localhost:3000/store/list/22``
 - Return one game that are register in an of object.
 - Parameters: The item id is searched for.
 - Responses:<br>
+
   200 ``OK`` - If the request and responde was made successfully.<br>
   400 ``Bad Request``- If the id parameter goes wrong.<br>
   404 ``Not Found`` - If the id parameter does not exist in the database.<br>
@@ -114,6 +117,7 @@ Endpoint: ``http://localhost:3000/store/list/22``
   
 Endpoint: ``http://localhost:3000/store/register``
 
+* The fields "Title" and "cover" are uniques.
 - Register a game in the database.
 - Parameters: A json with filled fields.<br>
 
@@ -129,7 +133,8 @@ Endpoint: ``http://localhost:3000/store/register``
 }
 ```
 
-- Responses: The request that was sent.<br>
+- Responses: 
+
 201 ``Created`` - If the request was made successfully.
 ```
 {
@@ -145,9 +150,87 @@ Endpoint: ``http://localhost:3000/store/register``
     "createdAt": "2021-01-05T01:03:49.246Z"
 }
 ```
+<hr>
 
+#### /PUT/
   
+Endpoint: ``http://localhost:3000/store/edit/:id``
+
+- Edit a game in the database.
+- Parameters: An id to edit a game.<br>
+
+```
+{
+    "title": "Minecraft",
+    "description": "2k resolution.",
+    "price": 33,
+    "quantity": 1,
+    "year": 2015,
+    "avaiable": true,
+    "cover": "https://www.pexels.com/pt-br/foto/borrao-brincadeiras-close-concentracao-159393/"
+}
+
+```
+
+- Responses: 
+
+201 ``Created`` - If the request was made successfully.
+400 ``Bad Request``- If the id parameter goes wrong.<br>
+```
+{
+    "id": 28,
+    "title": "Minecraft ||",
+    "description": "4k resolution.",
+    "price": "250",
+    "avaiable": true,
+    "quantity": 15,
+    "year": 2015,
+    "cover": "https://www.pexels.com/pt-br/foto/abstrato-resumo-abstrair-negocio-5939135/",
+    "updatedAt": "2021-01-05T01:03:49.246Z",
+    "createdAt": "2021-01-05T01:03:49.246Z"
+}
+```
+<hr>
 
 
+#### /PATCH/
+  
+Endpoint: ``http://localhost:3000/store/edit/:id``
 
+- Turn a game avaiable or not in the store.
+- Parameters: An id to edit a game.<br>
 
+```
+{    
+    "avaiable": false    
+}
+
+```
+
+- Responses: 
+
+200 ``OK`` - If the request was made successfully.<br>
+400 ``Bad Request``- If the id parameter goes wrong.
+
+<hr>
+
+#### /DELETE/
+  
+Endpoint: ``http://localhost:3000/store/remove/:id``
+
+- Delete a game from the store the store.<br>
+- Parameters: An id to delete a game.
+
+```
+{    
+    "avaiable": false    
+}
+
+```
+
+- Responses:
+
+200 ``OK`` - If the request was made successfully.<br>
+400 ``Bad Request``- If the id parameter goes wrong.
+
+<hr>

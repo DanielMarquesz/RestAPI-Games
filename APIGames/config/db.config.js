@@ -6,6 +6,6 @@ module.exports = {
     host: env.HOST,
     username: env.USERNAME,
     password: env.PASSWORD,
-    database: 'games4fun',
+    database: 'games4fun',  // Set the name of database
     timezone: '-03:00'
 }

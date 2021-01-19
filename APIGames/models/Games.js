@@ -1,52 +1,52 @@
-
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const connection = require('../database/connection');
+const { Sequelize, DataTypes, Model } = require("sequelize");
+const connection = require("../database/connection");
 
 class Games extends Model {}
 
-Games.init({
-   
-   title: {
+Games.init(
+  {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
-   },
+      unique: true,
+    },
 
-   description: {
-      type: DataTypes.TEXT      
-   },
+    description: {
+      type: DataTypes.TEXT,
+    },
 
-   price: {
+    price: {
       type: DataTypes.FLOAT,
-      allowNull: false      
-   },
+      allowNull: false,
+    },
 
-   quantity: {
+    quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false
-   },
+      allowNull: false,
+    },
 
-   year: {
+    year: {
       type: DataTypes.INTEGER,
-      allowNull: false
-   },
+      allowNull: false,
+    },
 
-   avaiable: {
+    avaiable: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
-   },
+      allowNull: false,
+    },
 
-   cover:{
+    cover: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
-   }
+      unique: true,
+    },
+  },
+  {
+    sequelize: connection,
+    modelName: "Games",
+  }
+);
 
-},{
-   sequelize: connection,
-   modelName: 'Games'
-})
-
-//Games.sync({force: false}) // To recriate the table set True
+//Games.sync({force: false}) // To create the table set 'True', but after created once set 'False'
 
 module.exports = Games;

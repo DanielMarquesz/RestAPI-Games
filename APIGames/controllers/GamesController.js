@@ -1,6 +1,5 @@
 const { response } = require("express");
 const express = require("express");
-const Joi = require("joi");
 const Games = require("../models/Games");
 const { gamesSchema } = require("../validations/models/gamesSchema");
 const router = express.Router();
@@ -29,7 +28,7 @@ router.get("/list/:id", async (req, res) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        res.send(err).json(err);
       });
   }
 });
@@ -40,8 +39,6 @@ router.post("/register", async (req, res, next) => {
   } catch (error) {
     res.send(error);
   }
-
-  // console.log(resultado);
 
   let { title, description, price, quantity, avaiable, year, cover } = req.body;
 
@@ -58,7 +55,7 @@ router.post("/register", async (req, res, next) => {
       res.status(201).json(games);
     })
     .catch((err) => {
-      console.log(err);
+      res.send(err).json(err);
     });
 });
 

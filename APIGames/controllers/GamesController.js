@@ -94,7 +94,7 @@ router.put("/edit/:id", async (req, res) => {
         res.status(201).send(games);
       })
       .catch((err) => {
-        res.send(err);
+        res.send(err).json(err);
       });
   }
 });
@@ -110,8 +110,7 @@ router.patch("/edit/:id", async (req, res) => {
         avaiable,
       },
       { where: { id: req.params.id } }
-    )
-    .then((game) => {
+    ).then((game) => {
       res.sendStatus(200);
     });
   }

@@ -1,4 +1,3 @@
-const { response } = require("express");
 const express = require("express");
 const Games = require("../models/Games");
 const { gamesSchema } = require("../validations/models/gamesSchema");

@@ -1,5 +1,13 @@
 ## RestAPI - Games :envelope:
 
+
+### Table of Contents
+
+* [About the API](#about-the-api)
+
+
+
+
 ### About the API
 
 This API allow anyone that runs its to create, list, edit and remove an game from a database table. At this moment the API runs too unit and integration tests using [Jest](https://jestjs.io), and have some simple data validations using the [Joi](https://www.npmjs.com/package/joi). This Rest APi was made to pratice and learn about https methods and best pratices of coding, and it still in development.
